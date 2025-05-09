@@ -341,6 +341,11 @@
             Similar to <see cref="M:Havit.Blazor.Components.Web.Bootstrap.HxButton.GetDefaults"/>, enables defining wider <see cref="P:Havit.Blazor.Components.Web.Bootstrap.HxButton.Settings"/> in component descendants (by returning a derived settings class).
             </remarks>
         </member>
+        <member name="P:Havit.Blazor.Components.Web.Bootstrap.HxButton.IsVisible">
+            <summary>
+            Visibility of the button.
+            </summary>
+        </member>
         <member name="P:Havit.Blazor.Components.Web.Bootstrap.HxButton.Text">
             <summary>
             Text of the button.
@@ -763,6 +768,11 @@
             <summary>
             Refreshes the calendar.
             Useful when the customization needs to be updated.
+            </summary>
+        </member>
+        <member name="P:Havit.Blazor.Components.Web.Bootstrap.HxCalendar.CssClass">
+            <summary>
+            Additional CSS class.
             </summary>
         </member>
         <member name="T:Havit.Blazor.Components.Web.Bootstrap.CardImagePlacement">
@@ -4476,6 +4486,11 @@
             Full documentation and demos: <see href="https://havit.blazor.eu/components/HxInputText">https://havit.blazor.eu/components/HxInputText</see>.
             </summary>
         </member>
+        <member name="M:Havit.Blazor.Components.Web.Bootstrap.HxInputText.GetInputElementReference">
+            <summary>
+            Returns Input Html Element From Inside Deep Class Structure
+            </summary>
+        </member>
         <member name="M:Havit.Blazor.Components.Web.Bootstrap.HxInputText.GetDefaults">
             <summary>
             Returns application-wide defaults for the component.
@@ -4549,6 +4564,12 @@
             Gets or sets the behavior when the model is updated from the input.
             </summary>
         </member>
+        <member name="P:Havit.Blazor.Components.Web.Bootstrap.HxInputTextBase.OnEnter">
+            <summary>
+            Custom parameter, which is used to trigger the searching, whenever user clicks on Enter button, while being focused
+            in the text input 
+            </summary>
+        </member>
         <member name="P:Havit.Blazor.Components.Web.Bootstrap.HxInputTextBase.Placeholder">
             <summary>
             Placeholder for the input.
@@ -4574,6 +4595,14 @@
         </member>
         <member name="M:Havit.Blazor.Components.Web.Bootstrap.HxInputTextBase.BuildRenderInput(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)">
             <inheritdoc />
+        </member>
+        <member name="M:Havit.Blazor.Components.Web.Bootstrap.HxInputTextBase.HandleKeyUpInternal(Microsoft.AspNetCore.Components.Web.KeyboardEventArgs)">
+            <summary>
+            Custom method that is used to check if user clicked on Enter button and the method was provided in "OnEnter" parameter
+            that will be called 
+            </summary>
+            <param name="e"></param>
+            <returns></returns>
         </member>
         <member name="M:Havit.Blazor.Components.Web.Bootstrap.HxInputTextBase.GetElementName">
             <summary>
@@ -6755,6 +6784,16 @@
         <member name="M:Havit.Blazor.Components.Web.Bootstrap.HxGrid`1.Dispose">
             <inheritdoc />
         </member>
+        <member name="M:Havit.Blazor.Components.Web.Bootstrap.HxGrid`1.ClearSelectedDataItem">
+            <summary>
+            Sets SelectedDataItem to null
+            </summary>
+        </member>
+        <member name="T:Havit.Blazor.Components.Web.Bootstrap.GridPageSizerValue">
+            <summary>
+            Values for Grid Page Sizer
+            </summary>
+        </member>
         <member name="T:Havit.Blazor.Components.Web.Bootstrap.HxGrid">
             <summary>
             Non-generic API for the <see cref="T:Havit.Blazor.Components.Web.Bootstrap.HxGrid`1"/> component.
@@ -6783,6 +6822,11 @@
         <member name="P:Havit.Blazor.Components.Web.Bootstrap.HxGridColumn`1.Visible">
             <summary>
             Indicates whether the column is visible (otherwise the column is hidden).
+            </summary>
+        </member>
+        <member name="P:Havit.Blazor.Components.Web.Bootstrap.HxGridColumn`1.RenderExpandCollapseElement">
+            <summary>
+            Indicates whether the grid will render expand/collapse element.
             </summary>
         </member>
         <member name="P:Havit.Blazor.Components.Web.Bootstrap.HxGridColumn`1.Order">
@@ -6818,14 +6862,34 @@
             Returns template for the item.
             </summary>
         </member>
+        <member name="P:Havit.Blazor.Components.Web.Bootstrap.HxGridColumn`1.ItemExpandCollapseContainerTemplate">
+            <summary>
+            Returns template for the expand/collapse container item.
+            </summary>
+        </member>
         <member name="P:Havit.Blazor.Components.Web.Bootstrap.HxGridColumn`1.ItemCssClass">
             <summary>
             Returns item CSS class (not dependent on data).
             </summary>
         </member>
+        <member name="P:Havit.Blazor.Components.Web.Bootstrap.HxGridColumn`1.ExpandCollapseContainerCssClass">
+            <summary>
+            Returns item css class for the expand collapse Container
+            </summary>
+        </member>
         <member name="P:Havit.Blazor.Components.Web.Bootstrap.HxGridColumn`1.ItemCssClassSelector">
             <summary>
             Returns item CSS class for the specific date item.
+            </summary>
+        </member>
+        <member name="P:Havit.Blazor.Components.Web.Bootstrap.HxGridColumn`1.ExpandCollapseElementCssClassSelector">
+            <summary>
+            Returns item css class for the expand collapse element
+            </summary>
+        </member>
+        <member name="P:Havit.Blazor.Components.Web.Bootstrap.HxGridColumn`1.ExpandCollapseContainerCssClassSelector">
+            <summary>
+            Returns item css class for the expand collapse container
             </summary>
         </member>
         <member name="P:Havit.Blazor.Components.Web.Bootstrap.HxGridColumn`1.PlaceholderTemplate">
@@ -6880,6 +6944,9 @@
         <member name="M:Havit.Blazor.Components.Web.Bootstrap.HxGridColumn`1.IsColumnVisible">
             <inheritdoc />
         </member>
+        <member name="M:Havit.Blazor.Components.Web.Bootstrap.HxGridColumn`1.IsColumnHasExpandCollapseElement">
+            <inheritdoc />
+        </member>
         <member name="M:Havit.Blazor.Components.Web.Bootstrap.HxGridColumn`1.GetColumnOrder">
             <inheritdoc />
         </member>
@@ -6887,6 +6954,12 @@
             <inheritdoc />
         </member>
         <member name="M:Havit.Blazor.Components.Web.Bootstrap.HxGridColumn`1.GetItemCellTemplate(`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:Havit.Blazor.Components.Web.Bootstrap.HxGridColumn`1.GetItemExpandCollapseElementTemplate(`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:Havit.Blazor.Components.Web.Bootstrap.HxGridColumn`1.GetItemExpandCollapseContainerTemplate(`0)">
             <inheritdoc />
         </member>
         <member name="M:Havit.Blazor.Components.Web.Bootstrap.HxGridColumn`1.GetItemPlaceholderCellTemplate(Havit.Blazor.Components.Web.Bootstrap.GridPlaceholderCellContext)">
@@ -6923,6 +6996,9 @@
         <member name="M:Havit.Blazor.Components.Web.Bootstrap.HxGridColumnBase`1.Havit#Blazor#Components#Web#Bootstrap#IHxGridColumn{TItem}#GetOrder">
             <inheritdoc />
         </member>
+        <member name="M:Havit.Blazor.Components.Web.Bootstrap.HxGridColumnBase`1.Havit#Blazor#Components#Web#Bootstrap#IHxGridColumn{TItem}#HasExpandCollapseElement">
+            <inheritdoc />
+        </member>
         <member name="M:Havit.Blazor.Components.Web.Bootstrap.HxGridColumnBase`1.Havit#Blazor#Components#Web#Bootstrap#IHxGridColumn{TItem}#GetHeaderCellTemplate(Havit.Blazor.Components.Web.Bootstrap.GridHeaderCellContext)">
             <inheritdoc />
         </member>
@@ -6930,6 +7006,12 @@
             <inheritdoc />
         </member>
         <member name="M:Havit.Blazor.Components.Web.Bootstrap.HxGridColumnBase`1.Havit#Blazor#Components#Web#Bootstrap#IHxGridColumn{TItem}#GetItemPlaceholderCellTemplate(Havit.Blazor.Components.Web.Bootstrap.GridPlaceholderCellContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Havit.Blazor.Components.Web.Bootstrap.HxGridColumnBase`1.Havit#Blazor#Components#Web#Bootstrap#IHxGridColumn{TItem}#GetItemExpandCollapseElementTemplate(`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:Havit.Blazor.Components.Web.Bootstrap.HxGridColumnBase`1.Havit#Blazor#Components#Web#Bootstrap#IHxGridColumn{TItem}#GetItemExpandCollapseContainerTemplate(`0)">
             <inheritdoc />
         </member>
         <member name="M:Havit.Blazor.Components.Web.Bootstrap.HxGridColumnBase`1.Havit#Blazor#Components#Web#Bootstrap#IHxGridColumn{TItem}#GetFooterCellTemplate(Havit.Blazor.Components.Web.Bootstrap.GridFooterCellContext)">
@@ -6952,6 +7034,11 @@
             It is not suitable to conditionally display the column using an @if statement in the markup code.
             </summary>
         </member>
+        <member name="M:Havit.Blazor.Components.Web.Bootstrap.HxGridColumnBase`1.IsColumnHasExpandCollapseElement">
+            <summary>
+            Indicates whether the column has an expand/collapse element.
+            </summary>
+        </member>
         <member name="M:Havit.Blazor.Components.Web.Bootstrap.HxGridColumnBase`1.GetColumnOrder">
             <summary>
             Returns the column order.
@@ -6970,6 +7057,18 @@
             <summary>
             Returns the data cell template for the specific item.
             </summary>
+        </member>
+        <member name="M:Havit.Blazor.Components.Web.Bootstrap.HxGridColumnBase`1.GetItemExpandCollapseElementTemplate(`0)">
+            <summary>
+            Returns data cell expand/collapse element template for the specific item.
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:Havit.Blazor.Components.Web.Bootstrap.HxGridColumnBase`1.GetItemExpandCollapseContainerTemplate(`0)">
+            <summary>
+            Returns data cell expand/collapse container template for the specific item.
+            </summary>
+            <param name="item"></param>
         </member>
         <member name="M:Havit.Blazor.Components.Web.Bootstrap.HxGridColumnBase`1.GetItemPlaceholderCellTemplate(Havit.Blazor.Components.Web.Bootstrap.GridPlaceholderCellContext)">
             <summary>
@@ -7035,6 +7134,26 @@
             <summary>
             Total number of pages of data items.
             Has to be equal to or greater than <c>1</c>.
+            </summary>
+        </member>
+        <member name="P:Havit.Blazor.Components.Web.Bootstrap.HxPager.From">
+            <summary>
+            Total number of data items.
+            </summary>
+        </member>
+        <member name="P:Havit.Blazor.Components.Web.Bootstrap.HxPager.To">
+            <summary>
+            Total number of data items.
+            </summary>
+        </member>
+        <member name="P:Havit.Blazor.Components.Web.Bootstrap.HxPager.PageSize">
+            <summary>
+            Total number of data items.
+            </summary>
+        </member>
+        <member name="P:Havit.Blazor.Components.Web.Bootstrap.HxPager.TotalItems">
+            <summary>
+            Total number of data items.
             </summary>
         </member>
         <member name="P:Havit.Blazor.Components.Web.Bootstrap.HxPager.CurrentPageIndex">
@@ -7124,6 +7243,12 @@
             It is not suitable to conditionally display the column using an @if statement in the markup code.
             </summary>
         </member>
+        <member name="M:Havit.Blazor.Components.Web.Bootstrap.IHxGridColumn`1.HasExpandCollapseElement">
+            <summary>
+            Column will have expand/collapse element by default. Grid will render an additional row under the main row to expand/collapse hidden details for the row
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Havit.Blazor.Components.Web.Bootstrap.IHxGridColumn`1.GetOrder">
             <summary>
             Gets the column order (for scenarios where the column order can be modified).
@@ -7149,6 +7274,16 @@
         <member name="M:Havit.Blazor.Components.Web.Bootstrap.IHxGridColumn`1.GetItemCellTemplate(`0)">
             <summary>
             Returns the data cell template for the specific item.
+            </summary>
+        </member>
+        <member name="M:Havit.Blazor.Components.Web.Bootstrap.IHxGridColumn`1.GetItemExpandCollapseElementTemplate(`0)">
+            <summary>
+            Returns data cell expand/collapse element template for the specific item.
+            </summary>
+        </member>
+        <member name="M:Havit.Blazor.Components.Web.Bootstrap.IHxGridColumn`1.GetItemExpandCollapseContainerTemplate(`0)">
+            <summary>
+            Returns data cell expand/collapse container template for the specific item.
             </summary>
         </member>
         <member name="M:Havit.Blazor.Components.Web.Bootstrap.IHxGridColumn`1.GetItemPlaceholderCellTemplate(Havit.Blazor.Components.Web.Bootstrap.GridPlaceholderCellContext)">
@@ -7894,6 +8029,11 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="P:Havit.Blazor.Components.Web.Bootstrap.HxMessageBox.CssClass">
+            <summary>
+            Additional CSS class.
+            </summary>
+        </member>
         <member name="T:Havit.Blazor.Components.Web.Bootstrap.HxMessageBoxHost">
             <summary>
             Displays message boxes initiated through <see cref="T:Havit.Blazor.Components.Web.Bootstrap.IHxMessageBoxService"/>.
@@ -8416,6 +8556,11 @@
             Extra large. Modal max-width: 1140px.
             </summary>
         </member>
+        <member name="P:Havit.Blazor.Components.Web.Bootstrap.HxNamedViewList`1.CssClass">
+            <summary>
+            Additional CSS class.
+            </summary>
+        </member>
         <member name="T:Havit.Blazor.Components.Web.Bootstrap.AnchorFragmentNavigationAutomationMode">
             <summary>
             Automation mode for <see cref="T:Havit.Blazor.Components.Web.Bootstrap.HxAnchorFragmentNavigation"/>.
@@ -8847,6 +8992,11 @@
         <member name="P:Havit.Blazor.Components.Web.Bootstrap.HxSidebarBrand.ParentSidebar">
             <summary>
             The <see cref="T:Havit.Blazor.Components.Web.Bootstrap.HxSidebar"/> containing the <see cref="T:Havit.Blazor.Components.Web.Bootstrap.HxSidebarBrand"/>.
+            </summary>
+        </member>
+        <member name="P:Havit.Blazor.Components.Web.Bootstrap.HxSidebarBrand.CssClass">
+            <summary>
+            Additional CSS class.
             </summary>
         </member>
         <member name="T:Havit.Blazor.Components.Web.Bootstrap.HxSidebarFooter">
@@ -10098,6 +10248,11 @@
         <member name="P:Havit.Blazor.Components.Web.Bootstrap.HxTabPanel.CssClass">
             <summary>
             Additional CSS class.
+            </summary>
+        </member>
+        <member name="P:Havit.Blazor.Components.Web.Bootstrap.HxTabPanel.ButtonsTemplate">
+            <summary>
+            Buttons template (will be rendered next to the tabs if not empty)
             </summary>
         </member>
         <member name="M:Havit.Blazor.Components.Web.Bootstrap.HxTabPanel.OnAfterRenderAsync(System.Boolean)">

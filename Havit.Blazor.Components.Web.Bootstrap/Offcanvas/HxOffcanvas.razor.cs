@@ -230,6 +230,8 @@ public partial class HxOffcanvas : IAsyncDisposable
 		}
 		_opened = true; // mark offcanvas as opened
 
+		this.IsSkeletonVisible = true;
+
 		StateHasChanged(); // ensures rendering offcanvas HTML
 
 		return Task.CompletedTask;

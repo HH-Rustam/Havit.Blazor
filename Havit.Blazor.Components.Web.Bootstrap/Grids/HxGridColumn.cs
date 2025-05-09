@@ -19,6 +19,11 @@ public class HxGridColumn<TItem> : HxGridColumnBase<TItem>
 	/// </summary>
 	[Parameter] public bool Visible { get; set; } = true;
 
+	/// <summary>
+	/// Indicates whether the grid will render expand/collapse element.
+	/// </summary>
+	[Parameter] public bool RenderExpandCollapseElement { get; set; } = false;
+
 #pragma warning disable BL0007 // Component parameter 'Havit.Blazor.Components.Web.Bootstrap.HxGridColumn<TItem>.Order' should be auto property
 	/// <summary>
 	/// The order (display index) of the column.
@@ -71,15 +76,39 @@ public class HxGridColumn<TItem> : HxGridColumnBase<TItem>
 	/// </summary>
 	[Parameter] public RenderFragment<TItem> ItemTemplate { get; set; }
 
+	[Parameter] public RenderFragment<TItem> ItemExpandCollapseElementTemplate { get; set; }
+
+	/// <summary>
+	/// Returns template for the expand/collapse container item.
+	/// </summary>
+	[Parameter] public RenderFragment<TItem> ItemExpandCollapseContainerTemplate { get; set; }
+
 	/// <summary>
 	/// Returns item CSS class (not dependent on data).
 	/// </summary>
 	[Parameter] public string ItemCssClass { get; set; }
 
+	[Parameter] public string ExpandCollapseElementCssClass { get; set; }
+
+	/// <summary>
+	/// Returns item css class for the expand collapse Container
+	/// </summary>
+	[Parameter] public string ExpandCollapseContainerCssClass { get; set; }
+
 	/// <summary>
 	/// Returns item CSS class for the specific date item.
 	/// </summary>
 	[Parameter] public Func<TItem, string> ItemCssClassSelector { get; set; }
+	/// <summary>
+	/// Returns item css class for the expand collapse element
+	/// </summary>
+	[Parameter] public Func<TItem, string> ExpandCollapseElementCssClassSelector { get; set; }
+
+	/// <summary>
+	/// Returns item css class for the expand collapse container
+	/// </summary>
+	[Parameter] public Func<TItem, string> ExpandCollapseContainerCssClassSelector { get; set; }
+
 	#endregion
 
 	/// <summary>
@@ -139,6 +168,9 @@ public class HxGridColumn<TItem> : HxGridColumnBase<TItem>
 	protected override bool IsColumnVisible() => Visible;
 
 	/// <inheritdoc />
+	protected override bool IsColumnHasExpandCollapseElement() => RenderExpandCollapseElement;
+
+	/// <inheritdoc />
 	protected override int GetColumnOrder() => Order;
 
 	/// <inheritdoc />
@@ -149,6 +181,20 @@ public class HxGridColumn<TItem> : HxGridColumnBase<TItem>
 	{
 		string cssClass = CssClassHelper.Combine(ItemCssClass, ItemCssClassSelector?.Invoke(item));
 		return GridCellTemplate.Create(RenderFragmentBuilder.CreateFrom(ItemTextSelector?.Invoke(item), ItemTemplate?.Invoke(item)), cssClass);
+	}
+
+	/// <inheritdoc />
+	protected override GridCellTemplate GetItemExpandCollapseElementTemplate(TItem item)
+	{
+		string cssClass = CssClassHelper.Combine(ExpandCollapseElementCssClass, ExpandCollapseElementCssClassSelector?.Invoke(item));
+		return GridCellTemplate.Create(RenderFragmentBuilder.CreateFrom(ItemTextSelector?.Invoke(item), ItemExpandCollapseElementTemplate?.Invoke(item)), cssClass);
+	}
+
+	/// <inheritdoc />
+	protected override GridCellTemplate GetItemExpandCollapseContainerTemplate(TItem item)
+	{
+		string cssClass = CssClassHelper.Combine(ExpandCollapseContainerCssClass, ExpandCollapseContainerCssClassSelector?.Invoke(item));
+		return GridCellTemplate.Create(RenderFragmentBuilder.CreateFrom(ItemTextSelector?.Invoke(item), ItemExpandCollapseContainerTemplate?.Invoke(item)), cssClass);
 	}
 
 	/// <inheritdoc />

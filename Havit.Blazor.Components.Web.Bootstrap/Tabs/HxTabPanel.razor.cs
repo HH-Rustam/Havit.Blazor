@@ -68,6 +68,11 @@ public partial class HxTabPanel : ComponentBase, IAsyncDisposable
 	/// </summary>
 	[Parameter] public string CssClass { get; set; }
 
+	/// <summary>
+	/// Buttons template (will be rendered next to the tabs if not empty)
+	/// </summary>
+	[Parameter] public RenderFragment ButtonsTemplate { get; set; }
+
 	private HxTab _previousActiveTab;
 	private List<HxTab> _tabsList = new();
 	private List<HxTab> _tabsListOrdered; // cached

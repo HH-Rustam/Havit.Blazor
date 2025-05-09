@@ -2,6 +2,7 @@
 @using Havit.Blazor.Components.Web.Internal
 @using Havit.Blazor.Components.Web.Bootstrap.Internal
 @using Microsoft.AspNetCore.Components.Web.Virtualization;
+@using Havit.Blazor.Components.Web.Bootstrap.Grids
 @typeparam TItem
 
 <CascadingValue Value="@_columnsListRegistration" Name="@ColumnsRegistrationCascadingValueName" IsFixed="true">
@@ -54,9 +55,73 @@
 			{
 				_paginationDecreasePageIndexAfterRender = true;
 			}
+			
+			DisplayMode = HasCard ? DisplayMode : HasListItem ? GridDisplayMode.ListItems : GridDisplayMode.Rows;
 		}
 
-		@if (columnsToRender.Any() && (shouldRenderLoadingData || shouldRenderEmptyData || shouldRenderData))
+
+		@if ((columnsToRender.Any() || DisplayMode == GridDisplayMode.ListItems) && (shouldRenderLoadingData || shouldRenderEmptyData || shouldRenderData))
+		{
+			if (shouldRenderLoadingData)
+			{
+				if (shouldRenderLoadingDataWithPlaceholders)
+				{
+					int rowsToRender = PlaceholdersRowCountEffective;
+					for (int rowIndex = 0; rowIndex < rowsToRender; rowIndex++)
+					{
+						if(CardPlaceholderTemplate == null)
+						{
+							<!-- CARD VIEW SKELETON -->
+							<DefaultGridCardSkeletonTemplate />
+						}
+						else
+						{
+							@CardPlaceholderTemplate
+						}
+					}
+				}
+				else
+				{
+					if (shouldRenderLoadingDataWithLoadingTemplate)
+					{
+						@LoadingDataTemplate
+					}
+					else
+					{
+						<div class="text-center text-secondary my-5">
+							<div class="fs-3"><HxIcon Icon="@BootstrapIcon.InboxFill" /></div>
+							<div>@HxGridLocalizer["LoadingData"]</div>
+						</div>
+					}
+				}
+			}
+
+			if (shouldRenderEmptyData)
+			{
+				if (EmptyDataTemplate != null)
+				{
+					@EmptyDataTemplate
+				}
+				else
+				{
+					<HxGridEmptyDataTemplateDefaultContent />
+				}
+			}
+
+			if (shouldRenderData)
+			{
+				if (_paginationDataItemsToRender != null)
+				{
+					foreach (TItem item in _paginationDataItemsToRender)
+					{
+						@ListItem(item)
+					}
+				}
+			}
+
+		}
+		
+		@if ((columnsToRender.Any() || DisplayMode == GridDisplayMode.Cards) && (shouldRenderLoadingData || shouldRenderEmptyData || shouldRenderData))
 		{
 			bool progressIndicatorInProgress =
 								(InProgress ?? _dataProviderInProgressAfterDelay)

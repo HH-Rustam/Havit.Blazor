@@ -1,5 +1,7 @@
 ﻿@namespace Havit.Blazor.Components.Web.Bootstrap
 
+@if (IsVisible)
+{
 <HxTooltip @ref="_tooltipComponent"
            Text="@Tooltip"
            Placement="@TooltipPlacement"
@@ -26,6 +28,11 @@
             {
                 <HxIcon Icon="IconEffective" CssClass="@CssClassHelper.Combine(IconCssClassEffective, SpinnerEffective ? "d-none" : null)" />
             }
+
+            @if (!String.IsNullOrEmpty(Text) || (ChildContent != null))
+                {
+                    <span class="hx-button-icon-text-spacer"></span>
+                }
         }
 
 
@@ -34,6 +41,11 @@
 
         @if ((IconPlacementEffective == ButtonIconPlacement.End) && ((IconEffective is not null) || SpinnerEffective))
         {
+            @if (!String.IsNullOrEmpty(Text) || (ChildContent != null))
+                {
+                    <span class="hx-button-text-icon-spacer"></span>
+                }
+                
             if (SpinnerEffective)
             {
                 <HxSpinner Size="SpinnerSize.Small" />
@@ -45,3 +57,4 @@
         }
     </button>
 </HxTooltip>
+}

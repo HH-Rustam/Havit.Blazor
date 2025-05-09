@@ -4,7 +4,7 @@
 	int? tabindexValue = KeyboardNavigation ? 0 : -1;
 }
 
-<div class="hx-calendar">
+<div class="@CssClassHelper.Combine("hx-calendar", this.CssClass)">
 	@if (_renderData != null)
 	{
 		<div class="hx-calendar-navigation">

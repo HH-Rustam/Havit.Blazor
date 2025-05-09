@@ -127,7 +127,7 @@ public partial class HxGrid<TItem> : ComponentBase, IDisposable
 	/// <summary>
 	/// The number of items to display per page. Applicable for grid modes such as pagination and load more. Set to 0 to disable paging.
 	/// </summary>
-	[Parameter] public int? PageSize { get; set; }
+	[Parameter] public int? PageSize { get; set; } = 20;
 	protected int PageSizeEffective => PageSize ?? GetSettings()?.PageSize ?? GetDefaults().PageSize ?? throw new InvalidOperationException(nameof(PageSize) + " default for " + nameof(HxGrid) + " has to be set.");
 
 	/// <summary>
@@ -393,6 +393,16 @@ public partial class HxGrid<TItem> : ComponentBase, IDisposable
 	/// <inheritdoc />
 	protected override async Task OnParametersSetAsync()
 	{
+		#region HH Extended
+
+		if (isFirstParameterSet)
+		{
+			pageSizerValue = PageSize.GetValueOrDefault(20);
+			isFirstParameterSet = false;
+		}
+
+		#endregion
+
 		await base.OnParametersSetAsync();
 
 		Contract.Requires<InvalidOperationException>(DataProvider != null, $"Property {nameof(DataProvider)} on {GetType()} must have a value.");
@@ -664,6 +674,8 @@ public partial class HxGrid<TItem> : ComponentBase, IDisposable
 	/// <returns>A <see cref="Task"/> representing the completion of the operation.</returns>
 	public async Task RefreshDataAsync()
 	{
+		this.CurrentUserState.PageIndex = 0;
+
 		if (_firstRenderCompleted)
 		{
 			await RefreshDataCoreAsync();

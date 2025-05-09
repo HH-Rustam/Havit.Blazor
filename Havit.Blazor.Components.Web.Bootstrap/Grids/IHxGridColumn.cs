@@ -17,6 +17,12 @@ public interface IHxGridColumn<TItem>
 	bool IsVisible();
 
 	/// <summary>
+	/// Column will have expand/collapse element by default. Grid will render an additional row under the main row to expand/collapse hidden details for the row
+	/// </summary>
+	/// <returns></returns>
+	bool HasExpandCollapseElement();
+
+	/// <summary>
 	/// Gets the column order (for scenarios where the column order can be modified).
 	/// The default value should be <c>0</c>.
 	/// When columns have the same order, they should render in the order of their registration (which is usually the same as the column appearance in the source code, but it differs when the column is displayed conditionally using an @if statement).
@@ -42,6 +48,16 @@ public interface IHxGridColumn<TItem>
 	/// Returns the data cell template for the specific item.
 	/// </summary>
 	GridCellTemplate GetItemCellTemplate(TItem item);
+
+	/// <summary>
+	/// Returns data cell expand/collapse element template for the specific item.
+	/// </summary>
+	GridCellTemplate GetItemExpandCollapseElementTemplate(TItem item);
+
+	/// <summary>
+	/// Returns data cell expand/collapse container template for the specific item.
+	/// </summary>
+	GridCellTemplate GetItemExpandCollapseContainerTemplate(TItem item);
 
 	/// <summary>
 	/// Returns the placeholder cell template.

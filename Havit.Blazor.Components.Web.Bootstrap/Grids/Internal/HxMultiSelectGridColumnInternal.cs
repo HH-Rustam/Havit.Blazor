@@ -110,4 +110,15 @@ public class HxMultiSelectGridColumnInternal<TItem> : HxGridColumnBase<TItem>
 			await OnSelectAllClicked.InvokeAsync();
 		}
 	}
+
+	protected override GridCellTemplate GetItemExpandCollapseElementTemplate(TItem item)
+	{
+		return GridCellTemplate.Empty;
+	}
+
+	protected override GridCellTemplate GetItemExpandCollapseContainerTemplate(TItem item)
+	{
+		return GridCellTemplate.Empty;
+	}
+
 }
