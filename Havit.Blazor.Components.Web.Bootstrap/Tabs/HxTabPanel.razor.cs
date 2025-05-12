@@ -144,7 +144,14 @@ public partial class HxTabPanel : ComponentBase, IAsyncDisposable
 
 	private void StartCollectingTabs()
 	{
-		_tabsList.Clear();
+		Console.WriteLine($"Tabs: {_tabsList?.Count} -- {_tabsList?.Any(i => i.Content is not null) }");
+		Console.WriteLine($"Tabs ordered: {_tabsListOrdered?.Count} -- {_tabsListOrdered?.Any(i => i.Content is not null)}");
+
+		if (_tabsList?.Any(i => i.Content is not null) ?? false)
+			_tabsList?.Clear();
+		else
+			_tabsListOrdered?.Clear();
+
 		_collectingTabs = true;
 	}
 

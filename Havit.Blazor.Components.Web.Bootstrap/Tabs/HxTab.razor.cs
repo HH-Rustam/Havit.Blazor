@@ -40,7 +40,7 @@ public partial class HxTab : ComponentBase, ICascadeEnabledComponent
 	/// Required RenderFragment parameter forces the component to rerender every time the TabPanel is rerendered.
 	/// This is necessary to ensure that the tab gets registered in the TabPanel.
 	/// </remarks>
-	[Parameter, EditorRequired] public RenderFragment Content { get; set; }
+	[Parameter] public RenderFragment Content { get; set; }
 
 	/// <summary>
 	/// The order (display index) of the tab.<br />
